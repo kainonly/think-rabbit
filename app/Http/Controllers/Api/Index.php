@@ -21,15 +21,8 @@ class Index extends Base
 
     public function index()
     {
-        $data = DB::table('router')->get();
         return [
             'error' => 0,
-            'data' => $data
         ];
-    }
-
-    public function info()
-    {
-        phpinfo();
     }
 }
