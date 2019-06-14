@@ -12,6 +12,7 @@
     "illuminate/cookie": "^5.8",
     "illuminate/redis": "^5.8",
     "laravel/lumen-framework": "5.8.*",
+    "lcobucci/jwt": "^3.3",
     "ramsey/uuid": "^3.8"
   },
   "autoload": {

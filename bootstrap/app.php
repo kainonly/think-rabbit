@@ -26,6 +26,7 @@ $app->withEloquent();
 $app->configure('session');
 $app->configure('hashing');
 $app->configure('cors');
+$app->configure('jwt');
 
 /*
 |--------------------------------------------------------------------------

@@ -4,10 +4,11 @@ namespace App\RedisModel;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
+use laravel\bit\common\Ext;
 
-class ErpApi
+class SystemRoleRouter
 {
-    private static $key = 'ErpApi';
+    private static $key = 'ErpRoleRouter';
 
     /**
      * 刷新缓存
@@ -18,12 +19,12 @@ class ErpApi
         try {
             Redis::del(self::$key);
             $data = [];
-            $lists = DB::table('api')
+            $lists = DB::table('role')
                 ->where('status', '=', 1)
-                ->get(['id', 'api'])
+                ->get(['id', 'router'])
                 ->toArray();
             foreach ($lists as $item) {
-                array_push($data, '/' . $item->api, $item->id);
+                array_push($data, $item->id, $item->router);
             }
             return Redis::hmset(self::$key, ...$data);
         } catch (\Exception $e) {
@@ -32,17 +33,17 @@ class ErpApi
     }
 
     /**
-     * 获取缓存
-     * @param string $api 接口地址
-     * @return bool
+     * 获取授权路由
+     * @param int $id 权限组主键
+     * @return array
      */
-    public static function get($api)
+    public static function get($id)
     {
         try {
             if (!Redis::exists(self::$key)) self::refresh();
-            return Redis::hget(self::$key, $api);
+            return Ext::unpack(Redis::hget(self::$key, $id));
         } catch (\Exception $e) {
-            return false;
+            return [];
         }
     }
 }
