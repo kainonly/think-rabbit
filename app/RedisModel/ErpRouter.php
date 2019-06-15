@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
 use lumen\bit\common\Ext;
 
-class SystemRouter
+class ErpRouter
 {
     private static $key = 'ErpRouter';
 

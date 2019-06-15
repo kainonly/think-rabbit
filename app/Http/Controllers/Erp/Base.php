@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\System;
+namespace App\Http\Controllers\Erp;
 
 use Laravel\Lumen\Routing\Controller as BaseController;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\System;
+namespace App\Http\Controllers\Erp;
 
 class Index extends Base
 {
@@ -17,7 +17,7 @@ class Index extends Base
     public function index()
     {
         return [
-            'name' => 'system'
+            'name' => 'erp'
         ];
     }
 }

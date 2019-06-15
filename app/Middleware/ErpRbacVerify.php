@@ -2,11 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\RedisModel\SystemApi;
-use App\RedisModel\SystemRoleApi;
+use App\RedisModel\ErpApi;
+use App\RedisModel\ErpRoleApi;
 use Closure;
 
-class SystemRbacVerify
+class ErpRbacVerify
 {
     private $except = [
         'main/login',
@@ -34,13 +34,13 @@ class SystemRbacVerify
             return $next($request);
         }
 
-        $apiId = SystemApi::get($request->getRequestUri());
+        $apiId = ErpApi::get($request->getRequestUri());
         if (!$apiId) return response()->json([
             'error' => 1,
             'msg' => 'error:not_allowed'
         ]);
 
-        $roleApi = collect(SystemRoleApi::get($request->role));
+        $roleApi = collect(ErpRoleApi::get($request->role));
         if (!$roleApi) return response()->json([
             'error' => 1,
             'msg' => 'error:not_allowed'

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use lumen\bit\common\JwtAuth;
 
-class SystemJwtVerify
+class ErpJwtVerify
 {
     private $except = [
         'main/login',
@@ -25,9 +25,9 @@ class SystemJwtVerify
             return $next($request);
         }
 
-        $result = JwtAuth::tokenVerify('system');
+        $result = JwtAuth::tokenVerify('erp');
         if (!$result) {
-            JwtAuth::tokenClear('system');
+            JwtAuth::tokenClear('erp');
             return response()->json([
                 'error' => 1
             ]);
