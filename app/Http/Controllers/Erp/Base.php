@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Erp;
 
-use Laravel\Lumen\Routing\Controller as BaseController;
+use Illuminate\Http\Request;
+use lumen\bit\BitController;
 
-class Base extends BaseController
+class Base extends BitController
 {
+    public function __construct(Request $request)
+    {
+        parent::__construct($request);
+    }
 }
