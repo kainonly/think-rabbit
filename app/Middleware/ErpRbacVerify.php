@@ -18,7 +18,6 @@ class ErpRbacVerify
         'api/validate_api',
         'router/validate_routerlink',
         'admin/validate_username',
-        'page/validate_routerlink'
     ];
 
     /**
