@@ -21,10 +21,8 @@ class Index extends Base
 
     public function index()
     {
-        $router = DB::table('router')->get(['id'])->pluck('id');
         return [
             'error' => 0,
-            'data' => $router
         ];
     }
 }
