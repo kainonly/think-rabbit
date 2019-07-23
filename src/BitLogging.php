@@ -26,11 +26,11 @@ final class BitLogging
     /**
      * 信息收集推送
      * @param string $namespace 行为命名
-     * @param array $data 存储数据
+     * @param array $raws 原始数据
      */
-    public function push(string $namespace, array $data = [])
+    public function push($namespace, array $raws = [])
     {
-        Rabbit::start(function () use ($namespace, $data) {
+        Rabbit::start(function () use ($namespace, $raws) {
             Rabbit::exchange($this->exchange)->create('direct', [
                 'durable' => true,
                 'auto_delete' => false,
@@ -44,7 +44,7 @@ final class BitLogging
             Rabbit::publish([
                 'appid' => $this->appid,
                 'namespace' => $namespace,
-                'data' => $data,
+                'raws' => $raws,
             ], [
                 'exchange' => $this->exchange,
             ]);
