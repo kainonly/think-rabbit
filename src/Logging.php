@@ -5,14 +5,14 @@ namespace think\logging;
 use think\Facade;
 
 /**
- * Class Queue
+ * Class Logging
  * @package think\logging
  * @method static void push(string $namespace, array $data = []) 信息收集推送
  */
-final class Queue extends Facade
+final class Logging extends Facade
 {
     protected static function getFacadeClass()
     {
-        return BitQueue::class;
+        return BitLogging::class;
     }
 }

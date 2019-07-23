@@ -6,10 +6,10 @@ use think\amqp\Rabbit;
 use think\facade\Config;
 
 /**
- * Class BitQueue
+ * Class BitLogging
  * @package think\logging
  */
-final class BitQueue
+final class BitLogging
 {
     private $appid;
     private $exchange;
