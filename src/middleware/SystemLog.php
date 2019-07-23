@@ -6,6 +6,10 @@ use think\amqp\Rabbit;
 use think\facade\Config;
 use think\Request;
 
+/**
+ * Class SystemLog
+ * @package think\logging\middleware
+ */
 class SystemLog
 {
     public function handle(Request $request, \Closure $next)
