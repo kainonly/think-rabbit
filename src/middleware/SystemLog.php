@@ -15,7 +15,7 @@ class SystemLog
     public function handle(Request $request, \Closure $next)
     {
         if (strpos($request->action(), 'valided') !== false) return $next($request);
-        $config = Config::get('queue.daq');
+        $config = Config::get('queue.logging');
         $exchange = $config['exchange'];
         $queue = $config['queue'];
         $appid = Config::get('app.app_id');

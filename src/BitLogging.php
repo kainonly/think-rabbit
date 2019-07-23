@@ -17,7 +17,7 @@ final class BitLogging
 
     public function __construct()
     {
-        $config = Config::get('queue.daq');
+        $config = Config::get('queue.logging');
         $this->exchange = $config['exchange'];
         $this->queue = $config['queue'];
         $this->appid = Config::get('app.app_id');
