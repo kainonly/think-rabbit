@@ -13,13 +13,11 @@ final class BitLogging
 {
     private $appid;
     private $exchange;
-    private $queue;
 
     public function __construct()
     {
         $config = Config::get('queue.logging');
         $this->exchange = $config['exchange'];
-        $this->queue = $config['queue'];
         $this->appid = Config::get('app.app_id');
     }
 
@@ -31,16 +29,6 @@ final class BitLogging
     public function push($namespace, array $raws = [])
     {
         Rabbit::start(function () use ($namespace, $raws) {
-            Rabbit::exchange($this->exchange)->create('direct', [
-                'durable' => true,
-                'auto_delete' => false,
-            ]);
-            $queue = Rabbit::queue($this->queue);
-            $queue->create([
-                'durable' => true,
-                'auto_delete' => false,
-            ]);
-            $queue->bind($this->exchange);
             Rabbit::publish([
                 'appid' => $this->appid,
                 'namespace' => $namespace,
