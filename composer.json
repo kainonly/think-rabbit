@@ -1,7 +1,23 @@
 {
-  "name": "kain/think-logging",
-  "description": "Think Bit 日志收集扩展",
-  "license": "MIT",
+  "name": "kain/think-amqp",
+  "description": "Think RabbitMQ 扩展",
+  "require": {
+    "kain/think-bit": "^6.0.0",
+    "kain/tidy-amqp": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "think\\amqp\\": "src/"
+    }
+  },
+  "extra": {
+    "think": {
+      "services": [
+        "think\\amqp\\service\\AMQPService",
+        "think\\amqp\\service\\LoggingService"
+      ]
+    }
+  },
   "authors": [
     {
       "name": "kain",
@@ -12,13 +28,5 @@
     "docs": "https://think-bit.kain.net.cn",
     "email": "zhangtqx@vip.qq.com"
   },
-  "autoload": {
-    "psr-4": {
-      "think\\logging\\": "src/"
-    }
-  },
-  "require": {
-    "kain/think-bit": "5.1.*",
-    "kain/think-amqp": "^1.0"
-  }
+  "license": "MIT"
 }

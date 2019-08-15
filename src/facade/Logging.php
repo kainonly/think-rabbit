@@ -1,6 +1,6 @@
 <?php
 
-namespace think\logging;
+namespace think\amqp;
 
 use think\Facade;
 
@@ -13,6 +13,6 @@ final class Logging extends Facade
 {
     protected static function getFacadeClass()
     {
-        return BitLogging::class;
+        return FactoryLogging::class;
     }
 }
