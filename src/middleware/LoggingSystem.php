@@ -2,7 +2,7 @@
 
 namespace think\logging\middleware;
 
-use think\amqp\Logging;
+use think\amqp\facade\Logging;
 use think\Request;
 
 /**

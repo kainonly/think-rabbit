@@ -1,7 +1,8 @@
 <?php
 
-namespace think\amqp;
+namespace think\amqp\facade;
 
+use think\amqp\FactoryLogging;
 use think\Facade;
 
 /**
