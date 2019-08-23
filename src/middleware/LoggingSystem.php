@@ -1,6 +1,6 @@
 <?php
 
-namespace think\logging\middleware;
+namespace think\amqp\middleware;
 
 use think\amqp\facade\Logging;
 use think\Request;
