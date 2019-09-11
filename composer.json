@@ -13,8 +13,7 @@
   "extra": {
     "think": {
       "services": [
-        "think\\amqp\\service\\AMQPService",
-        "think\\amqp\\service\\LoggingService"
+        "think\\amqp\\service\\AMQPService"
       ]
     }
   },
