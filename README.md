@@ -1,6 +1,6 @@
 ## Think AMQP
 
-RabbitMQ 消息队列 AMQP 操作类使用 [kain/tidy-amqp](https://github.com/kainonly/tidy-amqp) 做为依赖，[Think Bit](https://think-bit.kainonly.com) 辅助 ThinkPHP 快速集成 RESTFul API 的工具集
+Think RabbitMQ 消息队列 AMQP 操作类
 
 ![Packagist Version](https://img.shields.io/packagist/v/kain/think-amqp.svg?style=flat-square)
 ![Packagist](https://img.shields.io/packagist/dt/kain/think-amqp.svg?color=blue&style=flat-square)
