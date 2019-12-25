@@ -23,6 +23,12 @@ class AMQPFactory implements AMQPInterface
     private $options = [];
 
     /**
+     * 客户端集合
+     * @var array
+     */
+    private $clients = [];
+
+    /**
      * AMQPInstance constructor.
      * @param array $options
      */
@@ -36,8 +42,11 @@ class AMQPFactory implements AMQPInterface
      * @return AMQPClient
      * @inheritDoc
      */
-    public function client(string $name): AMQPClient
+    public function client(string $name = 'default'): AMQPClient
     {
+        if (!empty($this->clients[$name])) {
+            return $this->clients[$name];
+        }
         if (empty($this->options[$name])) {
             throw new InvalidArgumentException("The [$name] does not exist.");
         }
@@ -48,7 +57,7 @@ class AMQPFactory implements AMQPInterface
         if (!isset($option['extra'])) {
             $option['extra'] = [];
         }
-        return new AMQPClient(
+        $this->clients[$name] = new AMQPClient(
             $option['hostname'],
             (int)$option['port'],
             $option['username'],
@@ -56,27 +65,30 @@ class AMQPFactory implements AMQPInterface
             $option['virualhost'],
             $option['extra']
         );
+        return $this->clients[$name];
     }
 
     /**
      * @param Closure $closure
+     * @param string $name
      * @param array $options
      * @throws Exception
      * @inheritDoc
      */
-    public function channel(Closure $closure, array $options = []): void
+    public function channel(Closure $closure, string $name = 'default', array $options = []): void
     {
-        $this->client('default')->channel($closure, $options);
+        $this->client($name)->channel($closure, $options);
     }
 
     /**
      * @param Closure $closure
+     * @param string $name
      * @param array $options
      * @throws Exception
      * @inheritDoc
      */
-    public function channeltx(Closure $closure, array $options = []): void
+    public function channeltx(Closure $closure, string $name = 'default', array $options = []): void
     {
-        $this->client('default')->channeltx($closure, $options);
+        $this->client($name)->channeltx($closure, $options);
     }
 }

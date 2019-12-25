@@ -13,19 +13,21 @@ interface AMQPInterface
      * @param string $name 配置标识
      * @return AMQPClient
      */
-    public function client(string $name): AMQPClient;
+    public function client(string $name = 'default'): AMQPClient;
 
     /**
      * 创建信道
      * @param Closure $closure
-     * @param array $options
+     * @param string $name 配置标识
+     * @param array $options 信道参数
      */
-    public function channel(Closure $closure, array $options = []): void;
+    public function channel(Closure $closure, string $name = 'default', array $options = []): void;
 
     /**
      * 创建事务信道
      * @param Closure $closure
-     * @param array $options
+     * @param string $name 配置标识
+     * @param array $options 信道参数
      */
-    public function channeltx(Closure $closure, array $options = []): void;
+    public function channeltx(Closure $closure, string $name = 'default', array $options = []): void;
 }
