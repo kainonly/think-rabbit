@@ -4,55 +4,28 @@ declare(strict_types=1);
 namespace tests;
 
 use Exception;
-use think\App;
-use PHPUnit\Framework\TestCase;
 use simplify\amqp\AMQPManager;
-use think\amqp\common\AMQPFactory;
 use think\amqp\contract\AMQPInterface;
 use think\amqp\service\AMQPService;
 
-class AMQPTest extends TestCase
+class AMQPTest extends BaseTest
 {
     /**
-     * @return App
+     * @var AMQPInterface
      */
-    public function testNewApp()
+    private $amqp;
+
+    public function setUp(): void
     {
-        $app = new App();
-        $app->initialize();
-        $this->assertInstanceOf(
-            App::class,
-            $app,
-            '应用容器创建失败'
-        );
-        return $app;
+        parent::setUp();
+        $this->app->register(AMQPService::class);
+        $this->amqp = $this->app->get(AMQPInterface::class);
     }
 
-    /**
-     * @param App $app
-     * @return object
-     * @depends testNewApp
-     */
-    public function testRegisterService(App $app)
-    {
-        $app->register(AMQPService::class);
-        $amqp = $app->get(AMQPInterface::class);
-        $this->assertInstanceOf(
-            AMQPFactory::class,
-            $amqp,
-            '服务注册失败'
-        );
-        return $amqp;
-    }
-
-    /**
-     * @param AMQPInterface $amqp
-     * @depends testRegisterService
-     */
-    public function testClient(AMQPInterface $amqp)
+    public function testClient()
     {
         try {
-            $amqp->channel(function (AMQPManager $manager) {
+            $this->amqp->channel(function (AMQPManager $manager) {
                 $manager->queue('test')
                     ->setDeclare([
                         'durable' => true
