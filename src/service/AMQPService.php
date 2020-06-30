@@ -9,7 +9,7 @@ use think\Service;
 
 class AMQPService extends Service
 {
-    public function register()
+    public function register(): void
     {
         $this->app->bind(AMQPInterface::class, function () {
             $config = $this->app->config

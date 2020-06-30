@@ -23,7 +23,7 @@ class AMQPTest extends BaseTest
         $this->amqp = $this->app->get(AMQPInterface::class);
     }
 
-    public function testClient()
+    public function testClient(): void
     {
         try {
             $this->amqp->channel(function (AMQPManager $manager) {
