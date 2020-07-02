@@ -2,7 +2,7 @@
   "name": "kain/think-amqp",
   "description": "Think RabbitMQ 消息队列 AMQP 操作类",
   "require": {
-    "php": ">=7.4.*",
+    "php": ">=7.4.0",
     "topthink/framework": "^6.0.0",
     "kain/simplify-amqp": "^1.0"
   },
