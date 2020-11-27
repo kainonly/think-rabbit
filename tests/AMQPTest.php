@@ -5,7 +5,6 @@ namespace AmqpTests;
 
 use Exception;
 use simplify\amqp\AMQPManager;
-use Tests\BaseTest;
 use think\amqp\contract\AMQPInterface;
 use think\amqp\service\AMQPService;
 
