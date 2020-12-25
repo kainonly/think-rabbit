@@ -16,13 +16,13 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "AmqpTests\\": "library/think-amqp/tests/"
+      "AmqpTests\\": "tests/"
     }
   },
   "extra": {
     "think": {
       "services": [
-        "think\\amqp\\service\\AMQPService"
+        "think\\amqp\\AMQPService"
       ]
     }
   },

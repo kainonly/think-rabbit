@@ -1,7 +1,7 @@
 <?php
 declare (strict_types=1);
 
-namespace think\amqp\contract;
+namespace think\amqp;
 
 use Closure;
 use simplify\amqp\AMQPClient;

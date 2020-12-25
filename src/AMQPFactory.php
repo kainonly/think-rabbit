@@ -1,13 +1,12 @@
 <?php
 declare (strict_types=1);
 
-namespace think\amqp\common;
+namespace think\amqp;
 
 use Closure;
 use Exception;
 use InvalidArgumentException;
 use simplify\amqp\AMQPClient;
-use think\amqp\contract\AMQPInterface;
 
 /**
  * AMQP 实例对象
